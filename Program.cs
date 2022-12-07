@@ -14,9 +14,16 @@ namespace AddressBookSystem
         public static void Main(string[] args)
         {
             Console.WriteLine("----Welcome to AddressBook System Program----");
-            Console.WriteLine("Enter the details to create a contact");
+            //Console.WriteLine("Enter the details to create a contact");
+            Console.WriteLine("Enter the number of contacts needed to add");
+            int n = Convert.ToInt32(Console.ReadLine());
             Address obj = new Address();
-            obj.create();
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine("Enter the details to create a contact");
+                obj.create();
+            }
+            Console.WriteLine("These are the contacts stored");
             obj.display();
             //Console.ReadLine();
         }
