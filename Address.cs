@@ -1,50 +1,54 @@
-﻿using Addressbook;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace AddressBook
+namespace Addressbook
 {
-    public class Address
+    public class addressBook
     {
-        List<Contacts> add_book = new List<Contacts>();          
+        List<contact> add_book = new List<contact>();         
+
         public void create()
         {
-            Contacts contacts = new Contacts();                   
-            Console.WriteLine("Enter your first name :");
-            contacts.first_name = Console.ReadLine();
-            Console.WriteLine("Enter your last name :");
-            contacts.l_name = Console.ReadLine();
-            Console.WriteLine("Enter your address :");
-            contacts.address = Console.ReadLine();
-            Console.WriteLine("Enter your city :");
-            contacts.city = Console.ReadLine();
-            Console.WriteLine("Enter your state :");
-            contacts.state = Console.ReadLine();
-            Console.WriteLine("Enter your zip code :");
-            contacts.zip = Convert.ToInt64(Console.ReadLine());
-            Console.WriteLine("Enter your phone number :");
-            contacts.phone_no = Convert.ToInt64(Console.ReadLine());
-            Console.WriteLine("Enter your email :");
-            contacts.email = Console.ReadLine();
-            add_book.Add(contacts);
+            int ch = 1;
+            do
+            {
+                contact Contact = new contact();                   
+                Console.WriteLine("Enter your first name");
+                Contact.first_name = Console.ReadLine();
+                Console.WriteLine("Enter your second name");
+                Contact.s_name = Console.ReadLine();
+                Console.WriteLine("Enter your address");
+                Contact.address = Console.ReadLine();
+                Console.WriteLine("Enter your city");
+                Contact.city = Console.ReadLine();
+                Console.WriteLine("Enter your state");
+                Contact.state = Console.ReadLine();
+                Console.WriteLine("Enter your zip code");
+                Contact.zip = Convert.ToInt64(Console.ReadLine());
+                Console.WriteLine("Enter your phone number");
+                Contact.phone_no = Convert.ToInt64(Console.ReadLine());
+                Console.WriteLine("Enter your email");
+                Contact.email = Console.ReadLine();
+                add_book.Add(Contact);
+                Console.WriteLine("Enter 1 - for adding more contacts and 2 - for exiting");
+                ch = Convert.ToInt16(Console.ReadLine());
+            } while (ch == 1);
         }
-
-        public void edit(String Fname, String lname) 
+        public void edit(String Fname, String Sname) 
         {
-            Contacts contact = new Contacts();
+            contact Contact = new contact();
             foreach (var person in add_book)
             {
-                if (person.first_name.Equals(Fname) && person.l_name.Equals(lname))
+                if (person.first_name.Equals(Fname) && person.s_name.Equals(Sname))
                 {
                     Console.WriteLine("Edit and confirm the details now -");
                     Console.WriteLine("Enter your first name");
                     person.first_name = Console.ReadLine();
-                    Console.WriteLine("Enter your last name");
-                    person.l_name = Console.ReadLine();
+                    Console.WriteLine("Enter your second name");
+                    person.s_name = Console.ReadLine();
                     Console.WriteLine("Enter your address");
                     person.address = Console.ReadLine();
                     Console.WriteLine("Enter your city");
@@ -61,14 +65,13 @@ namespace AddressBook
                 }
             }
         }
-
-        public void delete(String Fname, String lname)
+        public void delete(String Fname, String Sname)
         {
-            Contacts contact = new Contacts();
+            contact Contact = new contact();
             bool found = false;
             foreach (var person in add_book)
             {
-                if (person.first_name.Equals(Fname) && person.l_name.Equals(lname))
+                if (person.first_name.Equals(Fname) && person.s_name.Equals(Sname))
                 {
                     found = true;
                     add_book.Remove(person);
@@ -80,19 +83,19 @@ namespace AddressBook
                 Console.WriteLine("Contact not found");
             }
         }
-
-        public void display()               
+        public void display()              
         {
             foreach (var data in add_book)
             {
-                Console.WriteLine($"Contacts No. - {data}");
-                Console.WriteLine($"Name - {data.first_name} {data.l_name}");
-                Console.WriteLine($"Address - {data.address}");
-                Console.WriteLine($"City- {data.city}");
-                Console.WriteLine($"State - {data.state}");
-                Console.WriteLine($"Zip - {data.zip}");
-                Console.WriteLine($"Phone no. - {data.phone_no}");
-                Console.WriteLine($"Email - {data.email}");
+                Console.WriteLine("Contact Name. - " + data.first_name);
+                Console.WriteLine("Full Name - " + data.first_name + " " + data.s_name);
+                Console.WriteLine("Address - " + data.address);
+                Console.WriteLine("City- " + data.city);
+                Console.WriteLine("State - " + data.state);
+                Console.WriteLine("Zip - " + data.zip);
+                Console.WriteLine("Phone no. - " + data.phone_no);
+                Console.WriteLine("Email - " + data.email);
+                Console.WriteLine();
             }
         }
     }
